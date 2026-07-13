@@ -150,8 +150,7 @@ same_count('in', 'be')
 
 text2 = 'To be, or not to be? That is the question: whether \'tis nobler in the mind, to suffer!'
 
-punctuation = '.,!?;:\'"()-'  # semnele pe care vrei să le elimini, scrise manual
-
+punctuation = '.,!?;:\'"()-'
 clean_words = []
 for word in text2.split():
     word = word.lower()
