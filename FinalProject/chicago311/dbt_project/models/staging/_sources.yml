@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: chicago311
+    schema: bronze
+    tables:
+      - name: raw_service_requests

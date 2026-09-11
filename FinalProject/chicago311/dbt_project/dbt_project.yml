@@ -1,0 +1,29 @@
+name: 'chicago_311'
+version: '1.0.0'
+config-version: 2
+
+profile: 'chicago_311'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+models:
+  chicago_311:
+    staging:
+      +schema: silver
+      +materialized: view
+
+    intermediate:
+      +schema: silver
+      +materialized: view
+
+    marts:
+      +schema: gold
+      +materialized: table
+
+seeds:
+  chicago_311:
+    +schema: bronze
