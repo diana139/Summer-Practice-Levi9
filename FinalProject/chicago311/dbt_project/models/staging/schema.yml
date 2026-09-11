@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_311_requests
+    columns:
+      - name: sr_id
+        tests:
+          - unique
+          - not_null
+
+      - name: created_date
+        tests:
+          - not_null
+
+      - name: status
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['open', 'completed', 'canceled']
+
+      - name: community_area
+        tests:
+          - not_null:
+              config:
+                severity: warn

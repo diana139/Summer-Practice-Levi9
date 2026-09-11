@@ -1,0 +1,83 @@
+version: 2
+
+models:
+  - name: fct_311_requests
+    columns:
+      - name: sr_id
+        tests:
+          - unique
+          - not_null
+
+      - name: sr_short_code
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_service_request_type')
+                field: sr_short_code
+
+      - name: community_area
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_community_area')
+                field: community_area
+              config:
+                severity: warn
+
+      - name: location_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_location')
+                field: location_id
+              config:
+                severity: warn
+
+      - name: created_date_day
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+
+      - name: last_modified_date_day
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+
+      - name: closed_date_day
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+
+  - name: dim_service_request_type
+    columns:
+      - name: sr_short_code
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_community_area
+    columns:
+      - name: community_area
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_location
+    columns:
+      - name: location_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_date
+    columns:
+      - name: date_day
+        tests:
+          - unique
+          - not_null
